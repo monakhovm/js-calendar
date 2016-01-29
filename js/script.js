@@ -1,4 +1,6 @@
 function nCalendar() {
+	//---------------------------------------VARIABLES------------------------------------------------------------
+	
 	var dayOfWeek = [
 		"Пн",
 		"Вт",
@@ -8,14 +10,20 @@ function nCalendar() {
 		"Сб",
 		"Вс"
 	];
-	var today = new Date();
+	var today = new Date("02/01/2016");
 	var dayMonth = new Date(today.getFullYear(),today.getMonth()+1,0).getDate();
 	var div = document.createElement("div");
 	var week = document.createElement("div");
 	var offset = (dayMonth%7-7)*-1;
 	var counter = 0;
 	var calendar = document.createElement("div");
-	
+	var br = document.createElement("br");
+	var wrapper = document.createElement("div")
+	var day = document.createElement("div");
+
+	//--------------------------------------/VARIABLES------------------------------------------------------------
+
+
 	document.body.appendChild(calendar).setAttribute("id", "calendar");
 	document.getElementById("calendar").appendChild(week).setAttribute("id","week");
 	
@@ -28,11 +36,11 @@ function nCalendar() {
 		document.getElementById("day" + i).style.background = "rgba(150, 150, 255, 0.5)";
 	};
 
-	var br = document.createElement("br");
+	
 
 	document.getElementById("calendar").appendChild(br);
 	
-	var wrapper = document.createElement("div")
+
 	
 	document.getElementById("calendar").appendChild(wrapper).setAttribute("id", "wrp");
 
@@ -45,13 +53,15 @@ function nCalendar() {
 	for (var i = counter; i < 7 - offset; i++) {
 		var day = document.createElement("div");
 		document.getElementById("wrp").appendChild(day).innerHTML = counter+1;
-		(i+offset>4) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
-		(counter+1 == 1 || counter+1 == 7 || counter+1 == 14 || counter+1 == 21) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
+		if (counter+1==today.getDate()) {
+			day.style.background = "rgba(150, 255, 150, 0.5)"
+		} else {
+			(i+offset>4) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
+			(counter+1 == 1 || counter+1 == 7 || counter+1 == 14 || counter+1 == 21) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
+		}
 		counter++;
 	};
 
-
-	var br = document.createElement("br");
 	document.getElementById("wrp").appendChild(br);
 
 
@@ -60,13 +70,15 @@ function nCalendar() {
 			if (counter+1<=dayMonth) {
 				var day = document.createElement("div");
 				document.getElementById("wrp").appendChild(day).innerHTML = counter+1;
-				(j > 4) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
+				if (counter+1==today.getDate()) {
+					day.style.background = "rgba(150, 255, 150, 0.5)";
+				} else {
+					(j > 4) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
+				}
 				counter++;
 			};
 			(counter == 1 || counter == 7 || counter == 14 || counter == 21) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
 		}
-		console.log();
-		var br = document.createElement("br");
 		document.getElementById("wrp").appendChild(br);
 	};	
 }
