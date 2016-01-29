@@ -1,4 +1,5 @@
 function nCalendar() {
+
 	//---------------------------------------VARIABLES------------------------------------------------------------
 	
 	var dayOfWeek = [
@@ -23,10 +24,10 @@ function nCalendar() {
 
 	//--------------------------------------/VARIABLES------------------------------------------------------------
 
-
 	document.body.appendChild(calendar).setAttribute("id", "calendar");
 	document.getElementById("calendar").appendChild(week).setAttribute("id","week");
 	
+	//--------------------------------------DAYS-OF-WEEK-----------------------------------------------------------
 
 	for (var i = 0; i < dayOfWeek.length; i++) {
 		var day = document.createElement("div");
@@ -36,13 +37,13 @@ function nCalendar() {
 		document.getElementById("day" + i).style.background = "rgba(150, 150, 255, 0.5)";
 	};
 
-	
+	//--------------------------------------/DAYS-OF-WEEK----------------------------------------------------------
 
 	document.getElementById("calendar").appendChild(br);
 	
-
-	
 	document.getElementById("calendar").appendChild(wrapper).setAttribute("id", "wrp");
+
+	//--------------------------------------FIRST-WEEK--------------------------------------------------------------
 
 	for (var i = counter; i < offset; i++) {
 		var day = document.createElement("div");
@@ -62,8 +63,11 @@ function nCalendar() {
 		counter++;
 	};
 
+	//--------------------------------------/FIRST-WEEK--------------------------------------------------------------
+
 	document.getElementById("wrp").appendChild(br);
 
+	//--------------------------------------OTHER-WEEKS--------------------------------------------------------------
 
 	for (var i = 0; i < (dayMonth-dayMonth%7)/7; i++) {
 		for (var j = 0; j < 7; j++) {
@@ -80,7 +84,9 @@ function nCalendar() {
 			(counter == 1 || counter == 7 || counter == 14 || counter == 21) ? day.style.background = "rgba(255, 150, 150, 0.5)" : "";
 		}
 		document.getElementById("wrp").appendChild(br);
-	};	
+	};
+	
+	//--------------------------------------/OTHER-WEEKS--------------------------------------------------------------	
 }
 
 nCalendar();
