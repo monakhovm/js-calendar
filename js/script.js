@@ -10,7 +10,7 @@ function nCalendar() {
 		"Сб",
 		"Вс"
 	];
-	var today = new Date("02/01/2016");
+	var today = new Date();
 	var dayMonth = new Date(today.getFullYear(),today.getMonth()+1,0).getDate();
 	var div = document.createElement("div");
 	var week = document.createElement("div");
